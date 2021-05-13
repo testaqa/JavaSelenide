@@ -12,12 +12,14 @@ def junitPlatformVersion = "1.7.0"
 def selenideVersion = "5.19.0"
 def ownerVersion = "1.0.12"
 def allureVersion = "2.13.8"
+def aspectjweaverVersion = "1.9.6"
 
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
     testImplementation "com.codeborne:selenide:${selenideVersion}"
     testImplementation "org.aeonbits.owner:owner:${ownerVersion}"
     testImplementation "io.qameta.allure:allure-selenide:${allureVersion}"
+    testImplementation "org.aspectj:aspectjweaver:${aspectjweaverVersion}"
 
     testRuntimeOnly "org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"
 }
