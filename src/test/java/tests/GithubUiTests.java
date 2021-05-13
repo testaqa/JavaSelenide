@@ -2,6 +2,7 @@ package tests;
 
 import helpers.DriverHelper;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.have;
@@ -21,6 +22,7 @@ public class GithubUiTests {
     }
 
     @Test
+    @Tag("web")
     void GithubIssueUiTest() {
             open("/testaqa/qaguru_hw18/issues/");
             $("div[aria-label='Issues']").$(linkText(issueTitle)).click();
