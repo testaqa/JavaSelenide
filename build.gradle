@@ -6,8 +6,15 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
+def junitVersion = "5.7.0"
+def junitPlatformVersion = "1.7.0"
+def selenideVersion = "5.19.0"
 
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    testImplementation "com.codeborne:selenide:${selenideVersion}"
+
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"
 }
 
 tasks.withType(JavaCompile) {
@@ -15,5 +22,6 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
+    useJUnitPlatform()
     systemProperties += System.properties
 }
