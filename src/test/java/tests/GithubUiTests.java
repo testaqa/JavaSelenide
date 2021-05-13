@@ -1,6 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
+import helpers.DriverHelper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +17,7 @@ public class GithubUiTests {
 
     @BeforeAll
     public static void beforeAll() {
-        Configuration.baseUrl = "https://github.com";
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.startMaximized = true;
+        DriverHelper.configureDriver();
     }
 
     @Test

@@ -9,10 +9,12 @@ repositories {
 def junitVersion = "5.7.0"
 def junitPlatformVersion = "1.7.0"
 def selenideVersion = "5.19.0"
+def ownerVersion = "1.0.12"
 
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
     testImplementation "com.codeborne:selenide:${selenideVersion}"
+    testImplementation "org.aeonbits.owner:owner:${ownerVersion}"
 
     testRuntimeOnly "org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"
 }
