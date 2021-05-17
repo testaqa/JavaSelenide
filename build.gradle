@@ -13,6 +13,8 @@ def selenideVersion = "5.19.0"
 def ownerVersion = "1.0.12"
 def allureVersion = "2.13.8"
 def aspectjweaverVersion = "1.9.6"
+def restAssuredVersion = "4.3.1"
+def jacksonVersion = "2.12.2"
 
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
@@ -20,6 +22,10 @@ dependencies {
     testImplementation "org.aeonbits.owner:owner:${ownerVersion}"
     testImplementation "io.qameta.allure:allure-selenide:${allureVersion}"
     testImplementation "org.aspectj:aspectjweaver:${aspectjweaverVersion}"
+
+    testImplementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    testImplementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    testImplementation "io.qameta.allure:allure-rest-assured:${allureVersion}"
 
     testRuntimeOnly "org.junit.platform:junit-platform-launcher:${junitPlatformVersion}"
 }
