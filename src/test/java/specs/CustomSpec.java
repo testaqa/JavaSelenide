@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class CustomSpec {
     private final RequestSpecification request = given()
-            .baseUri(ConfigHelper.getBaseURL())
+            .baseUri(ConfigHelper.apiConfig.apiUrl())
             .basePath("repos/testaqa/qaguru_hw18")
             .filter(new AllureRestAssured().setRequestTemplate("request.ftl").setResponseTemplate("response.ftl"))
             .log().uri()

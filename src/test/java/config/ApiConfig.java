@@ -8,6 +8,6 @@ import org.aeonbits.owner.Config;
         "classpath:config/api.properties"
 })
 public interface ApiConfig extends Config {
-    @Key("api.baseurl")
-    String baseURL();
+
+    String apiUrl();
 }

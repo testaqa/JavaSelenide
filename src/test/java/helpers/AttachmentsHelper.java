@@ -1,15 +1,15 @@
 package helpers;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.nio.charset.StandardCharsets;
 
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class AttachmentsHelper {
     @Attachment(value = "{attachName}", type = "text/plain")
@@ -19,12 +19,12 @@ public class AttachmentsHelper {
 
     @Attachment(value = "{attachName}", type = "image/png")
     public static byte[] attachScreenshot(String attachName) {
-        return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
     @Attachment(value = "Page source", type = "text/plain")
     public static byte[] attachPageSource() {
-        return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
+        return WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
@@ -39,10 +39,10 @@ public class AttachmentsHelper {
     }
 
     public static String getSessionId() {
-        return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
+        return ((RemoteWebDriver) WebDriverRunner.getWebDriver()).getSessionId().toString();
     }
 
     public static String getConsoleLogs() {
-        return String.join("\n", Selenide.getWebDriverLogs(BROWSER));
+        return String.join("\n", Selenide.getWebDriverLogs(LogType.BROWSER));
     }
 }

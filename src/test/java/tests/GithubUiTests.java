@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.AttachmentsHelper;
 import helpers.DriverHelper;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -12,7 +13,6 @@ import static com.codeborne.selenide.Condition.have;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static helpers.AttachmentsHelper.*;
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
@@ -30,10 +30,10 @@ public class GithubUiTests {
 
     @AfterEach
     public void afterEach() {
-        attachScreenshot("Last screenshot");
-        attachPageSource();
-        attachAsText("Browser console logs", getConsoleLogs());
-        attachVideo();
+        AttachmentsHelper.attachScreenshot("Last screenshot");
+        AttachmentsHelper.attachPageSource();
+        AttachmentsHelper.attachAsText("Browser console logs", AttachmentsHelper.getConsoleLogs());
+        AttachmentsHelper.attachVideo();
     }
 
     @Test

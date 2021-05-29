@@ -10,7 +10,6 @@ import specs.CustomSpec;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static specs.CustomSpec.spec;
 
 public class GithubApiTests {
 
@@ -22,7 +21,7 @@ public class GithubApiTests {
     @Tag("api")
     void getGithubIssueApiTest() {
         Issue response = given()
-                .baseUri(ConfigHelper.getBaseURL())
+                .baseUri(ConfigHelper.apiConfig.apiUrl())
                 .basePath("repos/testaqa/qaguru_hw18")
                 .filter(new AllureRestAssured().setRequestTemplate("request.ftl").setResponseTemplate("response.ftl"))
                 .log().uri()
@@ -42,11 +41,11 @@ public class GithubApiTests {
     @Test
     @Tag("api")
     void getGithubIssueWithSpecApiTest() {
-        Issue response = spec().request()
+        Issue response = CustomSpec.spec().request()
                 .get("/issues/{issue}", issueId)
                 .then()
                 .log().body()
-                .spec(spec().response())
+                .spec(CustomSpec.spec().response())
                 .extract()
                 .as(Issue.class);
 

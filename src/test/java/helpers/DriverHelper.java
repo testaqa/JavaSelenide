@@ -6,12 +6,13 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class DriverHelper {
     public static void configureDriver() {
-        Configuration.baseUrl = ConfigHelper.getWebUrl();
-        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.baseUrl = ConfigHelper.webConfig.webUrl();
+        Configuration.browser = ConfigHelper.webConfig.webBrowser();
         Configuration.startMaximized = true;
 
-        if (ConfigHelper.isRemoteWebDriver()) {
-            Configuration.remote = System.getProperty("web.remote.driver");
+        if (ConfigHelper.webConfig.remoteDriverUrl() != null
+                && !ConfigHelper.webConfig.remoteDriverUrl().isEmpty()) {
+            Configuration.remote = ConfigHelper.webConfig.remoteDriverUrl();
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);

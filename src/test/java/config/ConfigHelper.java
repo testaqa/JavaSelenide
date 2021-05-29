@@ -4,25 +4,33 @@ import org.aeonbits.owner.ConfigFactory;
 
 public class ConfigHelper {
 
+    public static WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
+
+    public static ApiConfig apiConfig = ConfigFactory.create(ApiConfig.class, System.getProperties());
+
     // web
-    private static WebConfig getWebConfig() {
-        return ConfigFactory.create(WebConfig.class, System.getProperties());
-    }
+//    public static WebConfig getWebConfig() {
+//        return ConfigFactory.create(WebConfig.class, System.getProperties());
+//    }
 
-    public static String getWebUrl() {
-        return getWebConfig().webUrl();
-    }
+//    public static String getWebBrowser() {
+//        return getWebConfig().webBrowser();
+//    }
 
-    public static boolean isRemoteWebDriver() {
-        return System.getProperty("web.remote.driver") != null;
-    }
+//    public static String getWebUrl() {
+//        return getWebConfig().webUrl();
+//    }
 
-    // api
-    private static ApiConfig getApiConfig() {
-        return ConfigFactory.create(ApiConfig.class);
-    }
+//    public static String getRemoteDriverUrl() {
+//        return getWebConfig().remoteDriverUrl();
+//    }
 
-    public static String getBaseURL() {
-        return getApiConfig().baseURL();
-    }
+//    // api
+//    private static ApiConfig getApiConfig() {
+//        return ConfigFactory.create(ApiConfig.class);
+//    }
+//
+//    public static String getApiUrl() {
+//        return getApiConfig().apiUrl();
+//    }
 }
